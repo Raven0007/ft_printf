@@ -21,7 +21,7 @@ int ft_putadd(void *add)
     nb = (unsigned long)add;
     if (ft_putstr("0x") == -1)
         return (-1);
-    res = 2
+    res = 2;
     fl = ft_Hx_helper(nb, "0123456789abcdef", &res);
     if (fl == -1)
         return (-1);

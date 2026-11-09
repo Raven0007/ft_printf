@@ -11,30 +11,28 @@
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include "libft.h"
 
-static	void ft_qualif(char type, va_list conver)
+static	int ft_qualif(char type, va_list conver)
 {
 	if (type == 'c')
 		return (ft_putchar(va_arg(conver, int)));
 	else if (type == 's')
 		return (ft_putstr(va_arg(conver, char *)));
-	else if (type == 'd' || 'i')
+	else if (type == 'd' || type == 'i')
 		return (ft_putnb(va_arg(conver, int)));
 	else if (type == 'u')
 		return (ft_putun_nb(va_arg(conver, unsigned int)));
-	else if (type == 'x' || 'X')
-		return (ft_puHex(va_arg(conver, unsigned int), type));	
+	else if (type == 'x' || type == 'X')
+		return (ft_putHex(va_arg(conver, unsigned int), type));	
 	else if (type == 'p')
 		return (ft_putadd(va_arg(conver, void *)));
 	else
-		return (ft_putcahr(type));
+		return (ft_putchar('%'));
 }
 
 int	ft_printf(char *form, ...)
 {
 	va_list	args;
-	char	*str;
 	int		flg[2];
 	int		i;
 
@@ -47,6 +45,8 @@ int	ft_printf(char *form, ...)
 	{
 		if (form[i] == '%')
 			flg[1] = ft_qualif(form[i++], args);
+		else
+			flg[1] = ft_putchar(form[i++]);
 		if (flg[1] == -1)
 			return (-1);
 		flg[0] += flg[1];
@@ -57,7 +57,7 @@ int	ft_printf(char *form, ...)
 
 int	main()
 {
-	ft_printf("Print this : %s : ", "Hello", "Hola","Parla", "");
+	ft_printf("Print this : %s %s %s %s: ", "Hello", "Hola","Parla", "");
 }
 /*
  * The variable flag used here to check ft_qualif returns

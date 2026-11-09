@@ -2,13 +2,12 @@
 #include <stdio.h>
 #include <unistd.h>
 
-void	ft(char *str)
+void	ft(long v)
 {
-	printf("%s", str);
+	printf("%ld", v);
 }
 int	main()
 {
-	char *str = "Helo" "World";
-	ft(str);
-
+	unsigned int	x = 2147483649;
+	ft(x);
 }

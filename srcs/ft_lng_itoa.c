@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
 static int	ft_count(long n)
 {
@@ -46,15 +46,18 @@ char	*ft_lng_itoa(long nb)
 	int	var[2];
 
 	var[1] = 0;
-	if (n < 0)
+	if (nb < 0)
 	{
 		var[1] = 1;
 		nb = -nb;
 	}
 	var[0] = ft_count(nb) + var[1];
-	str = malloc((var[0] * sizeof(char) + 1));
+	str = malloc(var[0] * sizeof(char) + 1);
 	if (!str)
 		return (NULL);
 	return (ft_imp(str, var[0], var[1], nb));
 }
-
+/*
+* var[1] represent the sign flag by default it set to 0 (post)
+* var[0] used to count nb of bytes must allocate var[1] count if (negtv) 
+*/
