@@ -22,7 +22,7 @@ int	ft_putstr(char *str)
 	int	ln;
 
 	if (!str)
-		*str = "(null)";
+		str = "(null)";
 	ln = 0;
 	while (str[ln])
 	{
