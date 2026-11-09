@@ -41,7 +41,7 @@ int	ft_putun_nb(unsigned int nb)
 
 int ft_Hx_helper(long nb, char *base, int *res)
 {
-	if (nb <= 16)
+	if (nb < 16)
 	{	
 		if(ft_putchar(base[nb]) == -1)
 			return (-1);
@@ -68,10 +68,15 @@ int	ft_putHex(unsigned int nb, char c)
 	base_l = "0123456789abcdef";
 	res = 0;
 	if (c == 'x')
+	{
 		if(ft_Hx_helper(nb, base_l, &res) == -1)
 			return (-1);
+	}
 	else
+	{
 		if(ft_Hx_helper(nb, base_u, &res) == -1)
 			return (-1);
+	}
 	return (res);
 }
+
