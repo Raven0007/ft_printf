@@ -44,7 +44,10 @@ int	ft_printf(char *form, ...)
 	while (form[i])
 	{
 		if (form[i] == '%')
-			flg[1] = ft_qualif(form[i++], args);
+		{
+			flg[1] = ft_qualif(form[++i], args);
+			i++;
+		}
 		else
 			flg[1] = ft_putchar(form[i++]);
 		if (flg[1] == -1)
@@ -53,11 +56,6 @@ int	ft_printf(char *form, ...)
 	}	
 	va_end(args);
 	return (flg[0]);
-}
-
-int	main()
-{
-	ft_printf("Print this : %s %s %s %s: ", "Hello", "Hola","Parla", "");
 }
 /*
  * The variable flag used here to check ft_qualif returns
