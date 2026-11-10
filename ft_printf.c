@@ -6,13 +6,13 @@
 /*   By: ablaila <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/05 20:47:57 by ablaila           #+#    #+#             */
-/*   Updated: 2026/11/09 15:53:07 by ablaila          ###   ########.fr       */
+/*   Updated: 2026/11/10 16:41:32 by ablaila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static	int ft_qualif(char type, va_list conver)
+static int	ft_qualif(char type, va_list conver)
 {
 	if (type == 'c')
 		return (ft_putchar(va_arg(conver, int)));
@@ -23,7 +23,7 @@ static	int ft_qualif(char type, va_list conver)
 	else if (type == 'u')
 		return (ft_putun_nb(va_arg(conver, unsigned int)));
 	else if (type == 'x' || type == 'X')
-		return (ft_putHex(va_arg(conver, unsigned int), type));	
+		return (ft_put_hex(va_arg(conver, unsigned int), type));
 	else if (type == 'p')
 		return (ft_putadd(va_arg(conver, void *)));
 	else
@@ -53,7 +53,7 @@ int	ft_printf(const char *form, ...)
 		if (flg[1] == -1)
 			return (-1);
 		flg[0] += flg[1];
-	}	
+	}
 	va_end(args);
 	return (flg[0]);
 }

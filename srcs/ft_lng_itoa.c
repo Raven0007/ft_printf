@@ -43,7 +43,7 @@ static char	*ft_imp(char *str, int count, int sign, long n)
 char	*ft_lng_itoa(long nb)
 {
 	char	*str;
-	int	var[2];
+	int		var[2];
 
 	var[1] = 0;
 	if (nb < 0)
@@ -58,6 +58,6 @@ char	*ft_lng_itoa(long nb)
 	return (ft_imp(str, var[0], var[1], nb));
 }
 /*
-* var[1] represent the sign flag by default it set to 0 (post)
-* var[0] used to count nb of bytes must allocate var[1] count if (negtv) 
-*/
+ * var[1] represent the sign flag by default it set to 0 (post)
+ * var[0] used to count nb of bytes must allocate var[1] count if (negtv)
+ */
