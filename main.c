@@ -2,5 +2,5 @@
 
 int	main()
 {
-	ft_printf("Test this %s i am very g%d%dd as Hell","one", 00);
+	printf("Test this %p\n", 0);
 }

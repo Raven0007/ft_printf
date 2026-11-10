@@ -19,6 +19,12 @@ int ft_putadd(void *add)
     int             fl;
 
     nb = (unsigned long)add;
+    if (!add)
+    {
+        if (ft_putstr("(nil)") == -1)
+            return (-1);
+        return (5);
+    }
     if (ft_putstr("0x") == -1)
         return (-1);
     res = 2;

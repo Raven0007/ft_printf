@@ -30,7 +30,7 @@ static	int ft_qualif(char type, va_list conver)
 		return (ft_putchar('%'));
 }
 
-int	ft_printf(char *form, ...)
+int	ft_printf(const char *form, ...)
 {
 	va_list	args;
 	int		flg[2];
@@ -60,5 +60,5 @@ int	ft_printf(char *form, ...)
 /*
  * The variable flag used here to check ft_qualif returns
  * if it was diffrent than -1 so gonna consider this value as
- * number of printed characters 
+ * number of printed characters and stored on flg[0]
  */

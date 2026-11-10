@@ -39,7 +39,7 @@ int	ft_putun_nb(unsigned int nb)
 	return (ft_putHlep(nb));
 }
 
-int ft_Hx_helper(long nb, char *base, int *res)
+int ft_Hx_helper(unsigned long nb, char *base, int *res)
 {
 	if (nb < 16)
 	{	

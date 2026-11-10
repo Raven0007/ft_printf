@@ -32,4 +32,3 @@ int	ft_putstr(char *str)
 	}
 	return (ln);
 }
-
