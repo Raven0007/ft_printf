@@ -1,4 +1,4 @@
-/* ************************************************************************** */
+=/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
@@ -30,23 +30,14 @@ static	int ft_qualif(char type, va_list conver)
 		return (ft_putchar('%'));
 }
 
-static int	ft_flg(char c)
+static int	ft_check(char c)
 {
 	if (c == '#' || c == '+' || c == ' ')
 		return (1);
 	return (0);
 }
 
-static int ft_flqualif(char flg, char type, va_list conver)
-{
-	int		res;
 
-	if (flg == '#' && (type == 'x' || type == 'X'))
-		res = ft_put_alt(type, conver);
-	else (flg == '+' || flg == ' ')
-		res = ft_put_sp_sgn(type, flg, conver);
-	return (res);
-}
 
 int	ft_printf(const char *form, ...)
 {
@@ -63,11 +54,8 @@ int	ft_printf(const char *form, ...)
 	{
 		if (form[i] == '%')
 		{
-			if (ft_flg(form[i + 1]))
-				flg[1] = ft_flqualif(form[++i], form[i+2], args);
-			else
-				flg[1] = ft_qualif(form[++i], args);
-			i++;
+			if (ft_check(form[++i]))
+				flg[1] = ft_pars(form, &i);
 		}
 		else
 			flg[1] = ft_putchar(form[i++]);

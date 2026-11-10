@@ -17,6 +17,14 @@
 #include <stdarg.h>
 #include <stdlib.h>
 
+typdef  struct s_flag
+{
+    int	alt;
+    int	sign;
+	int	space;
+}				t_flag;
+
+
 int	    ft_printf(const char *form, ...);
 int     ft_putstr(char *s);
 int     ft_putchar(char c);
