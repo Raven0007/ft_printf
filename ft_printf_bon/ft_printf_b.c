@@ -23,7 +23,7 @@ static	int ft_qualif(char type, va_list conver)
 	else if (type == 'u')
 		return (ft_putun_nb(va_arg(conver, unsigned int)));
 	else if (type == 'x' || type == 'X')
-		return (ft_putHex(va_arg(conver, unsigned int), type));	
+		return (ft_put_hex(va_arg(conver, unsigned int), type));	
 	else if (type == 'p')
 		return (ft_putadd(va_arg(conver, void *)));
 	else
@@ -55,7 +55,7 @@ int	ft_printf(const char *form, ...)
 		if (form[i] == '%')
 		{
 			if (ft_check(form[++i]))
-				flg[1] = ft_pars(form, &i);
+				flg[1] = ft_pars(form, &i, args);
 		}
 		else
 			flg[1] = ft_putchar(form[i++]);
