@@ -8,8 +8,8 @@ CFLAGS = -Wall -Wextra -Werror
 
 RFLAGS = rs
 
-SHARED = srcs/ft_lng_itoa.c srcs/ft_putadd.c  \
-       srcs/ft_prnt_utls.c srcs/ft_nbr_utls.c 
+SHARED = shared/ft_lng_itoa.c shared/ft_putadd.c  \
+       shared/ft_prnt_utls.c shared/ft_nbr_utls.c 
 
 SHARED_OBJS = $(SHARED:.c=.o)
 
@@ -27,25 +27,26 @@ BONUS_SRCS = ft_printf_bonus/ft_printf_bonus.c \
 
 BONUS_OBJS = $(BONUS_SRCS:.c=.o)
 
-all: $(NAME)
+all : $(NAME)
 
-$(NAME) : $(MAND_OBJS) $(SHARED_OBJS) $(BONUS_OBJS)
-	rm -f $(NAME)
+$(NAME) : $(MAND_OBJS) $(SHARED_OBJS)
+	rm -f $(NAME) $(BONUS_OBJS) bonus
 	$(AR) $(RFLAGS) $(NAME) $(MAND_OBJS) $(SHARED_OBJS)
 
 %.o : %.c $(MAND_HDR) $(BONUS_HDR)
 	$(CC) -c -g $(CFLAGS) $< -o $@
 
-bonus: $(NAME)
-	rm -f $(NAME)
+bonus: $(BONUS_OBJS) $(SHARED_OBJS)
+	rm -f $(NAME) $(MAND_OBJS)
 	$(AR) $(RFLAGS) $(NAME) $(BONUS_OBJS) $(SHARED_OBJS)
-	
+	touch bonus
+
 clean :
-	rm -rf $(MAND_OBJS) $(SHARED_OBJS) $(BONUS_OBJS)
+	rm -rf $(MAND_OBJS) $(SHARED_OBJS) $(BONUS_OBJS) bonus
 
 fclean : clean
 	rm -rf $(NAME)
 
-re : clean all
+re : fclean all
 
-.PHONY = clean
+.PHONY : clean
