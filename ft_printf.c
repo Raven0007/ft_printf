@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ablaila <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: ablaila <ablaila@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/05 20:47:57 by ablaila           #+#    #+#             */
 /*   Updated: 2026/11/10 16:41:32 by ablaila          ###   ########.fr       */

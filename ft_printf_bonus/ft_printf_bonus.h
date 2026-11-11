@@ -1,30 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_printf_bonus.h                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ablaila <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: ablaila <ablaila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/05 16:22:56 by ablaila           #+#    #+#             */
-/*   Updated: 2026/11/10 16:39:16 by ablaila          ###   ########.fr       */
+/*   Updated: 2026/11/11 15:05:27 by ablaila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#ifndef FT_PRINTF_BONUS_H
+# define FT_PRINTF_BONUS_H
 
-# include <stdarg.h>
-# include <stdlib.h>
-# include <unistd.h>
+# include "../ft_printf.h"
+
+typedef struct s_flag
+{
+	int	alt;
+	int	sign;
+	int	space;
+}		t_flag;
 
 int		ft_printf(const char *form, ...);
-int		ft_putstr(char *s);
-int		ft_putchar(char c);
-char	*ft_lng_itoa(long nb);
-int		ft_putadd(void *add);
-int		ft_put_hex(unsigned int nb, char c);
-int		ft_hx_helper(unsigned long nb, char *base, int *res);
-int		ft_putun_nb(unsigned int nb);
-int		ft_putnb(int nb);
+int		implement_strct(const char *form, int *i, va_list conver);
+int		ft_set_nb_sign(va_list conver, t_flag *strc);
+int		ft_set_addrs_sign(va_list conver, t_flag *strc, char type);
+int		ft_set_alternative(va_list conver, t_flag *strc, char type);
 
 #endif

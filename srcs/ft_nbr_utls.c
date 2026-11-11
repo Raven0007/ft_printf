@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_nbr_utls.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ablaila <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: ablaila <ablaila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/11/09 10:25:58 by ablaila           #+#    #+#             */
-/*   Updated: 2026/11/10 16:43:34 by ablaila          ###   ########.fr       */
+/*   Created: 2026/11/11 11:58:12 by ablaila           #+#    #+#             */
+/*   Updated: 2026/11/11 16:05:12 by ablaila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../ft_printf.h"
 
 static int	ft_put_help(long nb)
 {
@@ -57,7 +57,7 @@ int	ft_hx_helper(unsigned long nb, char *base, int *res)
 	return (1);
 }
 
-int	ft_puthex(unsigned int nb, char c)
+int	ft_put_hex(unsigned int nb, char c)
 {
 	char	*base_l;
 	char	*base_u;

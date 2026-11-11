@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lng_itoa.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ablaila <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: ablaila <ablaila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/11/07 15:17:22 by ablaila           #+#    #+#             */
-/*   Updated: 2026/11/09 11:34:31 by ablaila          ###   ########.fr       */
+/*   Created: 2026/11/11 11:57:54 by ablaila           #+#    #+#             */
+/*   Updated: 2026/11/11 12:16:19 by ablaila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../ft_printf.h"
 
 static int	ft_count(long n)
 {
