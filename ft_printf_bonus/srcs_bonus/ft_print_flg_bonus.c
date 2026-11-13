@@ -6,19 +6,19 @@
 /*   By: ablaila <ablaila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/11 10:24:15 by ablaila           #+#    #+#             */
-/*   Updated: 2026/11/11 15:16:48 by ablaila          ###   ########.fr       */
+/*   Updated: 2026/11/13 15:49:46 by ablaila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf_bonus.h"
 
-int	ft_set_nb_sign(va_list conver, t_flag *strc)
+int	ft_set_nb_sign(va_list *conver, t_flag *strc)
 {
 	int	nb;
 	int	res[2];
 
 	res[0] = 0;
-	nb = va_arg(conver, int);
+	nb = va_arg(*conver, int);
 	if (nb >= 0 && (strc->sign || strc->space))
 	{
 		if (strc->sign == 1)
@@ -39,13 +39,13 @@ int	ft_set_nb_sign(va_list conver, t_flag *strc)
 	return (res[1] + res[0]);
 }
 
-int	ft_set_addrs_sign(va_list conver, t_flag *strc, char type)
+int	ft_set_addrs_sign(va_list *conver, t_flag *strc, char type)
 {
 	void	*add;
 	int		res[2];
 
 	res[0] = 0;
-	add = va_arg(conver, void *);
+	add = va_arg(*conver, void *);
 	if ((strc->sign || strc->space) && !add)
 	{
 		if (strc->sign == 1)
@@ -66,13 +66,13 @@ int	ft_set_addrs_sign(va_list conver, t_flag *strc, char type)
 	return (res[1] + res[0]);
 }
 
-int	ft_set_alternative(va_list conver, t_flag *strc, char type)
+int	ft_set_alternative(va_list *conver, t_flag *strc, char type)
 {
 	unsigned int	hex;
 	int				res[2];
 
 	res[0] = 0;
-	hex = va_arg(conver, unsigned int);
+	hex = va_arg(*conver, unsigned int);
 	if (hex > 0 && strc->alt)
 	{
 		if (type == 'X')

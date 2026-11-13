@@ -6,20 +6,20 @@
 /*   By: ablaila <ablaila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/10 18:05:28 by ablaila           #+#    #+#             */
-/*   Updated: 2026/11/11 15:09:08 by ablaila          ###   ########.fr       */
+/*   Updated: 2026/11/13 15:53:32 by ablaila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf_bonus.h"
 
-static int	ft_put_qualif(char type, va_list conver)
+static int	ft_put_qualif(char type, va_list *conver)
 {
 	if (type == 'c')
-		return (ft_putchar(va_arg(conver, int)));
+		return (ft_putchar(va_arg(*conver, int)));
 	else if (type == 's')
-		return (ft_putstr(va_arg(conver, char *)));
+		return (ft_putstr(va_arg(*conver, char *)));
 	else if (type == 'u')
-		return (ft_putun_nb(va_arg(conver, unsigned int)));
+		return (ft_putun_nb(va_arg(*conver, unsigned int)));
 	else
 		return (ft_putchar('%'));
 }
@@ -38,7 +38,7 @@ static void	ft_set_strct(t_flag *strc)
 	strc->space = 0;
 }
 
-static int	ft_check_qualif(char type, va_list conver, t_flag *strc)
+static int	ft_check_qualif(char type, va_list *conver, t_flag *strc)
 {
 	if (type == 'd' || type == 'i')
 		return (ft_set_nb_sign(conver, strc));
@@ -50,7 +50,7 @@ static int	ft_check_qualif(char type, va_list conver, t_flag *strc)
 		return (ft_put_qualif(type, conver));
 }
 
-int	implement_strct(const char *form, int *i, va_list conver)
+int	implement_strct(const char *form, int *i, va_list *conver)
 {
 	t_flag	strc;
 

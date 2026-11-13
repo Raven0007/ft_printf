@@ -3,29 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ablaila <ablaila@student.1337.ma>          +#+  +:+       +#+        */
+/*   By: ablaila <ablaila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/05 20:47:57 by ablaila           #+#    #+#             */
-/*   Updated: 2026/11/10 16:41:32 by ablaila          ###   ########.fr       */
+/*   Updated: 2026/11/13 15:34:38 by ablaila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int	ft_qualif(char type, va_list conver)
+static int	ft_qualif(char type, va_list *conver)
 {
 	if (type == 'c')
-		return (ft_putchar(va_arg(conver, int)));
+		return (ft_putchar(va_arg(*conver, int)));
 	else if (type == 's')
-		return (ft_putstr(va_arg(conver, char *)));
+		return (ft_putstr(va_arg(*conver, char *)));
 	else if (type == 'd' || type == 'i')
-		return (ft_putnb(va_arg(conver, int)));
+		return (ft_putnb(va_arg(*conver, int)));
 	else if (type == 'u')
-		return (ft_putun_nb(va_arg(conver, unsigned int)));
+		return (ft_putun_nb(va_arg(*conver, unsigned int)));
 	else if (type == 'x' || type == 'X')
-		return (ft_put_hex(va_arg(conver, unsigned int), type));
+		return (ft_put_hex(va_arg(*conver, unsigned int), type));
 	else if (type == 'p')
-		return (ft_putadd(va_arg(conver, void *)));
+		return (ft_putadd(va_arg(*conver, void *)));
 	else
 		return (ft_putchar('%'));
 }
@@ -44,14 +44,15 @@ int	ft_printf(const char *form, ...)
 	while (form[i])
 	{
 		if (form[i] == '%')
-		{
-			flg[1] = ft_qualif(form[++i], args);
-			i++;
-		}
+			flg[1] = ft_qualif(form[++i], &args);
 		else
-			flg[1] = ft_putchar(form[i++]);
+			flg[1] = ft_putchar(form[i]);
+		i++;
 		if (flg[1] == -1)
+		{
+			va_end(args);
 			return (-1);
+		}
 		flg[0] += flg[1];
 	}
 	va_end(args);
@@ -59,6 +60,6 @@ int	ft_printf(const char *form, ...)
 }
 /*
  * The variable flag used here to check ft_qualif returns
- * if it was diffrent than -1 so gonna consider this value as
+ * if fl[1] was diffrent than -1 so gonna consider this value as
  * number of printed characters and stored on flg[0]
  */

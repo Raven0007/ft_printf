@@ -6,7 +6,7 @@
 /*   By: ablaila <ablaila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/05 20:47:57 by ablaila           #+#    #+#             */
-/*   Updated: 2026/11/11 15:03:00 by ablaila          ###   ########.fr       */
+/*   Updated: 2026/11/13 16:14:12 by ablaila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,14 @@ int	ft_printf(const char *form, ...)
 	while (form[i])
 	{
 		if (form[i] == '%')
-		{
-			i++;
-			flg[1] = implement_strct(form, &i, args);
-		}
+			flg[1] = (i++, implement_strct(form, &i, &args));
 		else
 			flg[1] = ft_putchar(form[i]);
 		if (flg[1] == -1)
+		{
+			va_end(args);
 			return (-1);
+		}
 		flg[0] += flg[1];
 		i++;
 	}
